@@ -1,0 +1,29 @@
+{
+    "name": "webprogrammingproject-group5",
+    "version": "1.0.0",
+    "description": "Express server project using compression",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon",
+        "lint": "eslint **/*.js"
+    },
+    "dependencies": {
+        "express": "^4.16.4",
+        "compression": "~1.7.4"
+    },
+    "devDependencies": {
+        "eslint": "^5.16.0",
+        "nodemon": "^1.18.11"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/olumide0077/WebProgrammingProject-Group5.git"
+    },
+    "author": "Amosun Olumide",
+    "contributors": [{
+        "name": ""
+        
+    }],
+    "keywords": ["server", "osiolabs", "express", "compression"]
+}

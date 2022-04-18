@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/olumide0077/WebProgrammingProject-Group5/issues"
   },
-  "homepage": "https://github.com/olumide0077/WebProgrammingProject-Group5#README"
+  "homepage": "https://github.com/olumide0077/WebProgrammingProject-Group5#README",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }

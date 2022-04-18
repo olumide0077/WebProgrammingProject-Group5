@@ -1,7 +1,13 @@
 const express = require("express")
 const router = express.Router()
 router.get("/",(req,res)=>{
-    res.json("Product list")
+    res.json({
+        inCart: 0,
+        tag: "Craft",
+        price: 100,
+        Description: 'fADV charge warm jacket M',
+        images: "Screenshot (11).jpeg"
+    })
 })
 
 router.post("/new",(req,res)=>{

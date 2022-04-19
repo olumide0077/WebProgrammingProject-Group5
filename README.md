@@ -2,5 +2,5 @@
 
 This repository is for Web programming project
 
-##documents
+##documents.
 Design and instructions documents can be found under documents directory

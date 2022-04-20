@@ -1,5 +1,5 @@
 # Queries to create database
-We can use following queries to create database in respective databases for ERDDiagram.jpeg under documents folder
+We can use following queries to create database in respective databases for ERDDiagram.jpeg under **documents** folder
 
 ## PostgreSQL
 --------------------

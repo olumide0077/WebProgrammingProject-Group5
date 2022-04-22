@@ -4,276 +4,107 @@ We can use following queries to create database in respective databases for ERDD
 ## PostgreSQL
 --------------------
 ```
-CREATE TABLE "Products" (
-  "ProductID" <type>,
-  "BrandID" <type>,
-  "ProductName" <type>,
-  "ProductDescription" <type>,
-  "Size" <type>,
-  "Color" <type>,
-  "AvailableProduct" <type>,
-  "Price" <type>,
-  "Weight" <type>,
-  "Picture" <type>,
-  "Note" <type>,
-  PRIMARY KEY ("ProductID")
+DROP TABLE IF EXISTS Products CASCADE;
+DROP TABLE IF EXISTS Users CASCADE;
+DROP TABLE IF EXISTS Customers CASCADE;
+DROP TABLE IF EXISTS Payments CASCADE;
+DROP TABLE IF EXISTS Orders CASCADE;
+DROP TABLE IF EXISTS Brands CASCADE;
+
+CREATE TABLE "brands" (
+  "brand_id" INT GENERATED ALWAYS AS IDENTITY,
+  "brand_name" VARCHAR(50),
+  PRIMARY KEY(brand_id)
 );
 
-CREATE TABLE "Users" (
-  "UserID" <type>,
-  "RegDate" <type>,
-  "FirstName" <type>,
-  "LastName" <type>,
-  "Email" <type>,
-  "Password" <type>,
-  "UserRole" <type>,
-  PRIMARY KEY ("UserID")
+CREATE TABLE "products" (
+  "product_id" INT GENERATED ALWAYS AS IDENTITY,
+  "brand_id" INT,
+  "product_name" VARCHAR(50) NOT NULL,
+  "product_description" VARCHAR(200),
+  "size" VARCHAR(50),
+  "color" VARCHAR(50),
+  "available_product" VARCHAR(50),
+  "price" VARCHAR(50),
+  "weight" VARCHAR(50),
+  "picture" VARCHAR(50),
+  "note" VARCHAR(50),
+  PRIMARY KEY (product_id),
+  CONSTRAINT fk_brand
+      FOREIGN KEY(brand_id) 
+	  REFERENCES brands(brand_id)
 );
 
-CREATE TABLE "Customers" (
-  "CustomerID" <type>,
-  "UserID" <type>,
-  "Address1" <type>,
-  "Address2" <type>,
-  "City" <type>,
-  "State" <type>,
-  "PostalCode" <type>,
-  "Country" <type>,
-  "Phone" <type>,
-  "CreditCard" <type>,
-  "CreditCardXpMo" <type>,
-  "CreditCardXpYr" <type>,
-  "BillingAddress" <type>,
-  "BillingCity" <type>,
-  "BillingRegion" <type>,
-  "BillingPostalCode" <type>,
-  "BillingCountry" <type>,
-  "ShippingAdress" <type>,
-  "ShippingCity" <type>,
-  "ShippingRegion" <type>,
-  "ShippingPostalCode" <type>,
-  "MembershipStatus" <type>,
-  PRIMARY KEY ("CustomerID"),
-  CONSTRAINT "FK_Customers.Address2"
-    FOREIGN KEY ("Address2")
-      REFERENCES "Users"("UserRole")
+CREATE TABLE "users"(
+  "user_id"  INT GENERATED ALWAYS AS IDENTITY,
+  "reg_date" VARCHAR(50) ,
+  "first_name" VARCHAR(50),
+  "last_name" VARCHAR(50),
+  "email" VARCHAR(50),
+  "password" VARCHAR(50),
+  "user_role" VARCHAR(50),
+  PRIMARY KEY(user_id)
 );
 
-CREATE TABLE "Payments" (
-  "PaymentID" <type>,
-  "OrderID" <type>,
-  "PaymentType" <type>,
-  "PaymentDate" <type>,
-  "PaymentStatus" <type>,
-  PRIMARY KEY ("PaymentID")
+CREATE TABLE "customers" (
+  "customer_id" INT GENERATED ALWAYS AS IDENTITY,
+  "user_id"  INT,
+  "address1" VARCHAR(50),
+  "address2" VARCHAR(50),
+  "city" VARCHAR(50),
+  "state" VARCHAR(50),
+  "postalCode" VARCHAR(50),
+  "country" VARCHAR(50),
+  "phone" INT,
+  "credit_card" INT,
+  "credit_card_xp_mo" VARCHAR(50),
+  "credit_card_xp_yr" VARCHAR(50),
+  "billing_address" VARCHAR(150),
+  "billing_city" VARCHAR(50),
+  "billing_region" VARCHAR(50),
+  "billing_postal_code" VARCHAR(50),
+  "billing_country" VARCHAR(50),
+  "shipping_address" VARCHAR(150),
+  "shipping_city" VARCHAR(50),
+  "shipping_region" VARCHAR(50),
+  "shipping_postal_code" VARCHAR(50),
+  "membership_status" VARCHAR(50),
+  PRIMARY KEY(customer_id),
+  CONSTRAINT fk_user
+      FOREIGN KEY(user_id) 
+	  REFERENCES users(user_id)
 );
 
-CREATE TABLE "Orders" (
-  "OrderID" <type>,
-  "ProductID" <type>,
-  "PaymentID" <type>,
-  "CustomerID" <type>,
-  "OrderNumber" <type>,
-  "OrderDate" <type>,
-  "Quantity" <type>,
-  "TotalPrice" <type>,
-  "BillingAddress" <type>,
-  "ShippingAddress" <type>,
-  "Color" <type>,
-  "Weight" <type>,
-  "Price" <type>,
-  CONSTRAINT "FK_Orders.ShippingAddress"
-    FOREIGN KEY ("ShippingAddress")
-      REFERENCES "Customers"("PostalCode")
+CREATE TABLE "payments" (
+  "payment_id" INT GENERATED ALWAYS AS IDENTITY,
+  "payment_type" VARCHAR(50),
+  "payment_date" VARCHAR(50),
+  "payment_status" VARCHAR(50),
+  PRIMARY KEY (payment_id)
 );
 
-CREATE INDEX "Pk" ON  "Orders" ("OrderID");
-
-CREATE TABLE "Brands" (
-  "BrandID" <type>,
-  "BrandName" <type>,
-  PRIMARY KEY ("BrandID")
-);
-```
-## mySQL
------------------
-```
-CREATE TABLE `Products` (
-  `ProductID` <type>,
-  `BrandID` <type>,
-  `ProductName` <type>,
-  `ProductDescription` <type>,
-  `Size` <type>,
-  `Color` <type>,
-  `AvailableProduct` <type>,
-  `Price` <type>,
-  `Weight` <type>,
-  `Picture` <type>,
-  `Note` <type>,
-  PRIMARY KEY (`ProductID`)
-);
-
-CREATE TABLE `Users` (
-  `UserID` <type>,
-  `RegDate` <type>,
-  `FirstName` <type>,
-  `LastName` <type>,
-  `Email` <type>,
-  `Password` <type>,
-  `UserRole` <type>,
-  PRIMARY KEY (`UserID`)
-);
-
-CREATE TABLE `Customers` (
-  `CustomerID` <type>,
-  `UserID` <type>,
-  `Address1` <type>,
-  `Address2` <type>,
-  `City` <type>,
-  `State` <type>,
-  `PostalCode` <type>,
-  `Country` <type>,
-  `Phone` <type>,
-  `CreditCard` <type>,
-  `CreditCardXpMo` <type>,
-  `CreditCardXpYr` <type>,
-  `BillingAddress` <type>,
-  `BillingCity` <type>,
-  `BillingRegion` <type>,
-  `BillingPostalCode` <type>,
-  `BillingCountry` <type>,
-  `ShippingAdress` <type>,
-  `ShippingCity` <type>,
-  `ShippingRegion` <type>,
-  `ShippingPostalCode` <type>,
-  `MembershipStatus` <type>,
-  PRIMARY KEY (`CustomerID`),
-  FOREIGN KEY (`Address2`) REFERENCES `Users`(`UserRole`)
-);
-
-CREATE TABLE `Payments` (
-  `PaymentID` <type>,
-  `OrderID` <type>,
-  `PaymentType` <type>,
-  `PaymentDate` <type>,
-  `PaymentStatus` <type>,
-  PRIMARY KEY (`PaymentID`)
-);
-
-CREATE TABLE `Orders` (
-  `OrderID` <type>,
-  `ProductID` <type>,
-  `PaymentID` <type>,
-  `CustomerID` <type>,
-  `OrderNumber` <type>,
-  `OrderDate` <type>,
-  `Quantity` <type>,
-  `TotalPrice` <type>,
-  `BillingAddress` <type>,
-  `ShippingAddress` <type>,
-  `Color` <type>,
-  `Weight` <type>,
-  `Price` <type>,
-  FOREIGN KEY (`ShippingAddress`) REFERENCES `Customers`(`PostalCode`),
-  KEY `Pk` (`OrderID`)
-);
-
-CREATE TABLE `Brands` (
-  `BrandID` <type>,
-  `BrandName` <type>,
-  PRIMARY KEY (`BrandID`)
-);
-```
-## SQL Server
-```
-CREATE TABLE [Products] (
-  [ProductID] <type>,
-  [BrandID] <type>,
-  [ProductName] <type>,
-  [ProductDescription] <type>,
-  [Size] <type>,
-  [Color] <type>,
-  [AvailableProduct] <type>,
-  [Price] <type>,
-  [Weight] <type>,
-  [Picture] <type>,
-  [Note] <type>,
-  PRIMARY KEY ([ProductID])
-);
-
-CREATE TABLE [Users] (
-  [UserID] <type>,
-  [RegDate] <type>,
-  [FirstName] <type>,
-  [LastName] <type>,
-  [Email] <type>,
-  [Password] <type>,
-  [UserRole] <type>,
-  PRIMARY KEY ([UserID])
-);
-
-CREATE TABLE [Customers] (
-  [CustomerID] <type>,
-  [UserID] <type>,
-  [Address1] <type>,
-  [Address2] <type>,
-  [City] <type>,
-  [State] <type>,
-  [PostalCode] <type>,
-  [Country] <type>,
-  [Phone] <type>,
-  [CreditCard] <type>,
-  [CreditCardXpMo] <type>,
-  [CreditCardXpYr] <type>,
-  [BillingAddress] <type>,
-  [BillingCity] <type>,
-  [BillingRegion] <type>,
-  [BillingPostalCode] <type>,
-  [BillingCountry] <type>,
-  [ShippingAdress] <type>,
-  [ShippingCity] <type>,
-  [ShippingRegion] <type>,
-  [ShippingPostalCode] <type>,
-  [MembershipStatus] <type>,
-  PRIMARY KEY ([CustomerID]),
-  CONSTRAINT [FK_Customers.Address2]
-    FOREIGN KEY ([Address2])
-      REFERENCES [Users]([UserRole])
-);
-
-CREATE TABLE [Payments] (
-  [PaymentID] <type>,
-  [OrderID] <type>,
-  [PaymentType] <type>,
-  [PaymentDate] <type>,
-  [PaymentStatus] <type>,
-  PRIMARY KEY ([PaymentID])
-);
-
-CREATE TABLE [Orders] (
-  [OrderID] <type>,
-  [ProductID] <type>,
-  [PaymentID] <type>,
-  [CustomerID] <type>,
-  [OrderNumber] <type>,
-  [OrderDate] <type>,
-  [Quantity] <type>,
-  [TotalPrice] <type>,
-  [BillingAddress] <type>,
-  [ShippingAddress] <type>,
-  [Color] <type>,
-  [Weight] <type>,
-  [Price] <type>,
-  CONSTRAINT [FK_Orders.ShippingAddress]
-    FOREIGN KEY ([ShippingAddress])
-      REFERENCES [Customers]([PostalCode])
-);
-
-CREATE INDEX [Pk] ON  [Orders] ([OrderID]);
-
-CREATE TABLE [Brands] (
-  [BrandID] <type>,
-  [BrandName] <type>,
-  PRIMARY KEY ([BrandID])
+CREATE TABLE "orders" (
+  "order_id"  INT GENERATED ALWAYS AS IDENTITY,
+  "product_id" INT,
+  "payment_id" INT,
+  "customer_id" INT,
+  "order_date" VARCHAR(50),
+  "quantity" INT,
+  "total_price" INT,
+  "billing_address" VARCHAR(150),
+  "shipping_address" VARCHAR(150),
+  "color"  VARCHAR(50),
+  "weight" INT,
+  "price" INT,
+  PRIMARY KEY(order_id),
+  CONSTRAINT fk_product
+      FOREIGN KEY(product_id) 
+	  REFERENCES products(product_id),
+  CONSTRAINT fk_payment
+      FOREIGN KEY(payment_id) 
+	  REFERENCES payments(payment_id),
+  CONSTRAINT fk_customer
+      FOREIGN KEY(customer_id) 
+	  REFERENCES customers(customer_id)  
 );
 ```

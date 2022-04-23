@@ -1,14 +1,22 @@
+require('dotenv').config();
 const express = require("express")
 const router = express.Router()
 router.get("/", async (req, res) => {
     const { Pool } = require('pg');
     const pool = (() => {
-        return new Pool({
-            connectionString: process.env.DATABASE_URL,
-            ssl: {
-                rejectUnauthorized: false
-            }
-        });
+        if (process.env.NODE_ENV !== 'production') {
+            return new Pool({
+                connectionString: process.env.DATABASE_URL,
+                ssl: false
+            });
+        } else {
+            return new Pool({
+                connectionString: process.env.DATABASE_URL,
+                ssl: {
+                    rejectUnauthorized: false
+                }
+            });
+        }
     })();
     try {
         const client = await pool.connect();

@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
     })();
     try {
         const client = await pool.connect();
-        const result = await client.query('SELECT * FROM public.products ORDER BY product_id ASC;');
+        const result = await client.query('SELECT * FROM public.users;');
         const results = { 'results': (result) ? result.rows : null };
         res.json(results);
         client.release();
@@ -32,11 +32,11 @@ router.get("/", async (req, res) => {
 })
 
 router.post("/new", (req, res) => {
-    res.json("adding a new product")
+    res.json("adding a new user")
 })
 
 router.get("/:name", (req, res) => {
-    res.json("look for product with id " + req.params.name)
+    res.json("look for product with name " + req.params.name)
 })
 
 module.exports = router

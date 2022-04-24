@@ -52,4 +52,4 @@ const userRouter = require("./routes/users")
 app.use("/users",userRouter)
 
 
-app.listen(port, () => console.log("Listening on port:" +port))
+app.listen(port, () => console.log(`Listening on port: ${port}` ))

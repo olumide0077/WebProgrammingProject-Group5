@@ -40,6 +40,7 @@ router.get("/", async (req, res) => {
     }
 
 })
+
 /**
  * @swagger
  * /orders/new:
@@ -61,7 +62,7 @@ router.get("/", async (req, res) => {
  *      '200':
  *        description: Successfully added a product
  */
-router.post("/new",async (req, res) => {
+router.post("/new", async (req, res) => {
     const query = `INSERT INTO orders(product_id, customer_id, order_date, quantity, total_price, billing_address, shipping_address, color, weight, price)
         VALUES (${req.body.product_id}, ${req.body.customer_id}, \'${req.body.order_date}\', ${req.body.quantity},
         ${req.body.total_price}, \'${req.body.billing_address}\', \'${req.body.shipping_address}\', \'${req.body.color}\',
@@ -95,23 +96,23 @@ router.post("/new",async (req, res) => {
     }
 })
 
- /**
- * @swagger
- * /orders/{id}:
- *   get:
- *     summary: Retrieve a single order record.
- *     description: Retrieve a single order record base on id provided.
- *     responses:
- *       200:
- *         description: A single order data.
- *     parameters:
- *      - name: id
- *        in: path
- *        description: order id
- *        schema:
- *          type: integer
- *        required: true 
- *        example: 1  
+/**
+* @swagger
+* /orders/{id}:
+*   get:
+*     summary: Retrieve a single order record.
+*     description: Retrieve a single order record base on id provided.
+*     responses:
+*       200:
+*         description: A single order data.
+*     parameters:
+*      - name: id
+*        in: path
+*        description: order id
+*        schema:
+*          type: integer
+*        required: true 
+*        example: 1  
 */
 router.get("/:id", async (req, res) => {
     order_id = req.params.id

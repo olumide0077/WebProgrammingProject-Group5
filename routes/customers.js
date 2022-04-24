@@ -100,27 +100,27 @@ router.post("/new", async (req, res) => {
 })
 
 
- /**
- * @swagger
- * /customers/{id}:
- *   get:
- *     summary: Retrieve a single customer record.
- *     description: Retrieve a single customer record base on id provided.
- *     responses:
- *       200:
- *         description: A single customer data.
- *     parameters:
- *      - name: id
- *        in: path
- *        description: customer id
- *        schema:
- *          type: integer
- *        required: true 
- *        example: 1  
+/**
+* @swagger
+* /customers/{id}:
+*   get:
+*     summary: Retrieve a single customer record.
+*     description: Retrieve a single customer record base on id provided.
+*     responses:
+*       200:
+*         description: A single customer data.
+*     parameters:
+*      - name: id
+*        in: path
+*        description: customer id
+*        schema:
+*          type: integer
+*        required: true 
+*        example: 1  
 */
 router.get("/:id", async (req, res) => {
     customer_id = req.params.id
-    const query = `select * from customers where order_id = ${customer_id};`
+    const query = `select * from customers where customer_id = ${customer_id};`
     const { Pool } = require('pg');
     const pool = (() => {
         if (process.env.NODE_ENV !== 'production') {

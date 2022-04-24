@@ -98,27 +98,19 @@ router.post("/new", async (req, res) => {
  * @swagger
  * /brands/{id}:
  *   get:
- *     summary: Retrieve a single JSONPlaceholder brand.
- *     description: Retrieve a single brand based on id given.
+ *     summary: Retrieve a single brand record.
+ *     description: Retrieve a single brand record base on id provided.
  *     responses:
  *       200:
  *         description: A single brand data.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 data:
- *                   type: object
- *                   properties:
- *                     id:
- *                       type: integer
- *                       description: The brand ID.
- *                       example: 0
- *                     name:
- *                       type: string
- *                       description: The brand's name.
- *                       example: apple
+ *     parameters:
+ *      - name: id
+ *        in: path
+ *        description: brand id
+ *        schema:
+ *          type: integer
+ *        required: true 
+ *        example: 1  
 */
 router.get("/:id", async (req, res) => {
     brand_id = req.params.id

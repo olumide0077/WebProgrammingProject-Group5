@@ -31,6 +31,9 @@ router.get("/", async (req, res) => {
 })
 
 router.post("/new", async (req, res) => {
+    const name = req.body.name;
+    const query = `INSERT INTO brands (brand_name) VALUES (\'${name}\');`
+    console.log ('query is = ' +query)
     const { Pool } = require('pg');
     const pool = (() => {
         if (process.env.NODE_ENV !== 'production') {
@@ -48,11 +51,9 @@ router.post("/new", async (req, res) => {
         }
     })();
     try {
-        const client = await pool.connect();
-        const result = await client.query('SELECT * FROM public.brands;');
-        const results = { 'results': (result) ? result.rows : null };
-        
-        res.status(200).send("successfuly added brand" +results);
+        const client = await pool.connect();        
+        const result = await client.query(query);
+        res.status(200).send("successfuly added brand");
         client.release();
     } catch (err) {
         console.error(err);

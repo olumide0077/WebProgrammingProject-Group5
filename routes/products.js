@@ -108,7 +108,7 @@ router.post("/new", async (req, res) => {
  *     parameters:
  *      - name: name
  *        in: path
- *        description: product id
+ *        description: product name
  *        schema:
  *          type: integer
  *        required: true 

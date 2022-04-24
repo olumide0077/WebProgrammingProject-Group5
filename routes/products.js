@@ -1,6 +1,18 @@
 require('dotenv').config();
 const express = require("express")
 const router = express.Router()
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
+
+/**
+ * @swagger
+ * /products:
+ *  get:
+ *    description: Use to request all products from db
+ *    responses:
+ *      '200': 
+ *        description: A successful response
+ */
 router.get("/", async (req, res) => {
     const { Pool } = require('pg');
     const pool = (() => {

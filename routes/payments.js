@@ -7,6 +7,7 @@ const router = express.Router()
  * /payments:
  *  get:
  *    description: Use to request all payments from db
+ *    summary: API to retrive all payments data.
  *    responses:
  *      '200': 
  *        description: A successful response
@@ -46,6 +47,7 @@ router.get("/", async (req, res) => {
  * /payments/new:
  *    post:
  *      description: Use to add new payment
+ *      summary: API to add payment data.
  *    consumes:
  *      - application/json
  *    parameters:
@@ -99,7 +101,7 @@ router.post("/new", async (req, res) => {
 * @swagger
 * /payments/{id}:
 *   get:
-*     summary: Retrieve a single payment record.
+*     summary: API to retrieve a single payment record.
 *     description: Retrieve a single customer record base on id provided.
 *     responses:
 *       200:

@@ -5,11 +5,12 @@ const router = express.Router()
 /**
  * @swagger
  * /brands:
- *  get:
- *    description: Use to request all brands from db
- *    responses:
- *      '200': 
- *        description: A successful response
+ *      get:
+ *          description: Use to request all brands from db
+ *          summary: API to retrive all brands data.
+ *      responses:
+ *          '200': 
+ *              description: A successful response
  */
 router.get("/", async (req, res) => {
     const { Pool } = require('pg');
@@ -45,6 +46,7 @@ router.get("/", async (req, res) => {
  * /brands/new:
  *    post:
  *      description: Use to add new brand
+ *      summary: API to add a brand data.
  *    consumes:
  *      - application/json
  *    parameters:
@@ -99,7 +101,7 @@ router.post("/new", async (req, res) => {
  * /brands/{id}:
  *   get:
  *     summary: Retrieve a single brand record.
- *     description: Retrieve a single brand record base on id provided.
+ *     description: API to retrieve a single brand record base on id provided.
  *     responses:
  *       200:
  *         description: A single brand data.

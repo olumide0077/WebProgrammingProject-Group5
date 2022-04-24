@@ -9,6 +9,7 @@ const swaggerUi = require("swagger-ui-express");
  * /products:
  *  get:
  *    description: Use to request all products from db
+ *    summary: API to retrive all products data.
  *    responses:
  *      '200': 
  *        description: A successful response
@@ -47,6 +48,7 @@ router.get("/", async (req, res) => {
  * /products/new:
  *    post:
  *      description: Use to add new product
+ *      summary: API to add a product data.
  *    consumes:
  *      - application/json
  *    parameters:
@@ -101,7 +103,7 @@ router.post("/new", async (req, res) => {
  * /products/{name}:
  *   get:
  *     summary: Search product based on names.
- *     description: Retrieve product records based on name provided.
+ *     description: API to retrieve product data based on name provided.
  *     responses:
  *       200:
  *         description: Product data matching the name provided.

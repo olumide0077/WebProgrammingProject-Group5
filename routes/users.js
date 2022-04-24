@@ -7,6 +7,7 @@ const router = express.Router()
  * /users:
  *  get:
  *    description: Use to request all users from db
+ *    summary: API to GET all users data.
  *    responses:
  *      '200': 
  *        description: A successful response
@@ -46,6 +47,7 @@ router.get("/", async (req, res) => {
  * /users/new:
  *    post:
  *      description: Use to add new user
+ *      summary: API to add a new user.
  *    consumes:
  *      - application/json
  *    parameters:
@@ -99,7 +101,7 @@ router.post("/new", async (req, res) => {
 * @swagger
 * /users/{id}:
 *   get:
-*     summary: Retrieve a single user record.
+*     summary: API to retrieve a single user record.
 *     description: Retrieve a single user record base on id provided.
 *     responses:
 *       200:

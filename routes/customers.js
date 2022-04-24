@@ -7,6 +7,7 @@ const router = express.Router()
  * /customers:
  *  get:
  *    description: Use to request all customers from db
+ *    summary: API to retrive all customers data.
  *    responses:
  *      '200': 
  *        description: A successful response
@@ -45,6 +46,7 @@ router.get("/", async (req, res) => {
  * /customers/new:
  *    post:
  *      description: Use to add new customer
+ *      summary: API to add a customer data.
  *    consumes:
  *      - application/json
  *    parameters:
@@ -104,7 +106,7 @@ router.post("/new", async (req, res) => {
 * @swagger
 * /customers/{id}:
 *   get:
-*     summary: Retrieve a single customer record.
+*     summary: API to retrieve a single customer record.
 *     description: Retrieve a single customer record base on id provided.
 *     responses:
 *       200:

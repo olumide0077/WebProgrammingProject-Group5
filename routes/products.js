@@ -31,8 +31,33 @@ router.get("/", async (req, res) => {
 
 })
 
-router.post("/new", (req, res) => {
-    res.json("adding a new product")
+router.post("/new", async (req, res) => {
+    const { Pool } = require('pg');
+    const pool = (() => {
+        if (process.env.NODE_ENV !== 'production') {
+            return new Pool({
+                connectionString: process.env.DATABASE_URL,
+                ssl: false
+            });
+        } else {
+            return new Pool({
+                connectionString: process.env.DATABASE_URL,
+                ssl: {
+                    rejectUnauthorized: false
+                }
+            });
+        }
+    })();
+    try {
+        const client = await pool.connect();
+        const result = await client.query('SELECT * FROM public.products ORDER BY product_id ASC;');
+        const results = { 'results': (result) ? result.rows : null };
+        res.json(results);
+        client.release();
+    } catch (err) {
+        console.error(err);
+        res.json({ error: err });
+    }
 })
 
 router.get("/:name", (req, res) => {

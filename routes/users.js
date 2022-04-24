@@ -32,8 +32,22 @@ router.get("/", async (req, res) => {
 })
 
 router.post("/new", (req, res) => {
+    const body=req.body
+    res.json(body)
     res.json("adding a new user")
 })
+
+router.post('/api', function(req, res) {
+    const user_id = req.body.id;
+    const token = req.body.token;
+    const geo = req.body.geo;
+  
+    res.send({
+      'user_id': user_id,
+      'token': token,
+      'geo': geo
+    });
+  });
 
 router.get("/:name", (req, res) => {
     res.json("look for product with name " + req.params.name)

@@ -190,12 +190,12 @@ function showCart() {
       <img src="${item.imgSrc}">
       <span>${item.name}</span>
       </div>
-      <div class="price">$${item.price}</div>
-      <div class="quantity">
+      <div class="price"> Price: $${item.price}</div>
+      <div class="quantity">Quantity:
       <i class="fa-solid fa-plus"></i>
-      <span>${item.inCart}</span><i class="fa-solid fa-minus"></i>
+      <span> ${item.inCart}</span><i class="fa-solid fa-minus"></i>
       </div>
-      <div class="total">$${item.inCart * item.price}</div>
+      <div class="total">Total: $${item.inCart * item.price}</div>
       </div>
       `
    });

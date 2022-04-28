@@ -4,10 +4,10 @@ const app = express()
 const port = process.env.PORT || 3000
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
-
+const cors = require('cors');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(cors({origin:'*'}));
 // Extended: https://swagger.io/specification/#infoObject
 const swaggerOptions = {
     swaggerDefinition: {
@@ -18,7 +18,7 @@ const swaggerOptions = {
         contact: {
           name: "Harim Muzamil"
         },
-        servers: ["http://localhost:3000"]
+        servers: ["https://rest-api-webproject.herokuapp.com"]
       }
     },
     

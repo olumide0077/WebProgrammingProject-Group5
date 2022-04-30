@@ -60,17 +60,17 @@ router.get("/", async (req, res) => {
  *          name: Example
  *          type: object
  *          format: application/json
- *          example: {"brand_id": 1, "product_name": "seko watch 1","product_description": "a good watch","size": "100","color": "silver","available_product": "100","price": "600","weight": "10","picture": "/images/seko1.jpeg","note": "call me when ready"}
+ *          example: {"brand_id": 1, "product_name": "seko watch 1","product_description": "a good watch","size": "100","color": "silver","available_product": "100","price": "600","weight": "10","picture": "/images/seko1.jpeg","note": "call me when ready","product_tag":"watch", "product_in_cart":0}
  *    responses:
  *      '200':
  *        description: Successfully added a product
  */
 router.post("/new", async (req, res) => {
     const query = `INSERT INTO products(
-        brand_id, product_name, product_description, size, color, available_product, price, weight, picture, note)
+        brand_id, product_name, product_description, size, color, available_product, price, weight, picture, note,product_tag,product_in_cart)
         VALUES (${req.body.brand_id}, \'${req.body.product_name}\', \'${req.body.product_description}\', \'${req.body.size}\',
         \'${req.body.color}\', \'${req.body.available_product}\', \'${req.body.price}\', \'${req.body.weight}\',
-        \'${req.body.picture}\', \'${req.body.note}\');`
+        \'${req.body.picture}\', \'${req.body.note}\', \'${req.body.product_tag}\', ${req.body.product_in_cart});`
     console.log(query)
     const { Pool } = require('pg');
     const pool = (() => {
@@ -98,23 +98,23 @@ router.post("/new", async (req, res) => {
         res.json({ error: err });
     }
 })
- /**
- * @swagger
- * /products/{name}:
- *   get:
- *     summary: Search product based on names.
- *     description: API to retrieve product data based on name provided.
- *     responses:
- *       200:
- *         description: Product data matching the name provided.
- *     parameters:
- *      - name: name
- *        in: path
- *        description: product name
- *        schema:
- *          type: integer
- *        required: true 
- *        example: seko  
+/**
+* @swagger
+* /products/{name}:
+*   get:
+*     summary: Search product based on names.
+*     description: API to retrieve product data based on name provided.
+*     responses:
+*       200:
+*         description: Product data matching the name provided.
+*     parameters:
+*      - name: name
+*        in: path
+*        description: product name
+*        schema:
+*          type: integer
+*        required: true 
+*        example: seko  
 */
 router.get("/:name", async (req, res) => {
     const query = `select * from products where product_name LIKE \'\%${req.params.name}\%\';`

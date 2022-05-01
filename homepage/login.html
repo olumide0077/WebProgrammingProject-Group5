@@ -22,25 +22,22 @@
                 <div class="slide-tab"></div>
             </div>
             <div class="form-inner">
-                <form action="#" class="login">
+                <form action="login.php" class="login">
                     <div class="field">
-                        <input type="text" placeholder="Email Address" required>
+                        <input type="email" placeholder="Email Address" required>
                     </div>
                     <div class="field">
                         <input type="password" placeholder="Password" required>
                     </div>
-                    <div class="pass-link"><a href="forgetp.html">Forgot password?</a></div>
+                    <div class="pass-link"><a href="forgetpassword.html">Forgot password?</a></div>
                     <div class="field">
                         <input type="submit" value="Login">
                     </div>
                     <div class="signup-link">Not a member?<a href="#">Signup now</a></div>
                 </form>
-                <form action="#" class="signup">
+                <form action="register.php"  method="post" class="signup" autocomplete="off">
                     <div class="field">
-                        <input type="text" placeholder="First name" required>
-                    </div>
-                    <div class="field">
-                        <input type="text" placeholder="Last name" required>
+                        <input type="text" name="username" placeholder="Username" required>
                     </div>
                     <div class="field">
                         <input type="text" placeholder="Email Address" required>

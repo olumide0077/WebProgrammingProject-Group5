@@ -173,3 +173,12 @@ cursor: pointer;
 .cartTotal {
     width: 8%;
 }
+.payment {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 10px 0;
+}
+.paymentTitle {
+  width: 25%;
+}

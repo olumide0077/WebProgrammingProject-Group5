@@ -1,0 +1,118 @@
+<html>
+
+<head>
+    <title>Add Product Data</title>
+    <script>
+
+
+        async function sendData() {
+
+
+            console.log("in send data")
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+            myHeaders.append("Accept", "application/json");
+
+            var raw = {
+                "brand_id": document.getElementById("brand_id").value,
+                "product_name": document.getElementById("product_name").value,
+                "product_description": document.getElementById("product_description").value,
+                "size": document.getElementById("size").value,
+                "color": document.getElementById("color").value,
+                "available_product": document.getElementById("available_product").value,
+                "price": document.getElementById("price").value,
+                "weight": document.getElementById("weight").value,
+                "picture": document.getElementById("picture").value,
+                "note": document.getElementById("note").value,
+                "product_tag": document.getElementById("product_tag").value,
+                "product_in_cart": document.getElementById("product_in_cart").value
+            };
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: JSON.stringify(raw),
+                mode: 'cors'
+
+            };
+            console.log(JSON.stringify(raw))
+            console.log('end call')
+            event.preventDefault();
+            await fetch("https://rest-api-webproject.herokuapp.com/products/new", requestOptions)
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log(error));
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <style>
+        tr>*+* {
+            padding-left: 4em;
+        }
+    </style>
+    <form onsubmit="sendData()">
+        <h2>Example to POST Product</h2>
+        <table border="0">
+            <tr>
+                <td>Brand_id</td>
+                <td><input type="text" id="brand_id" value="1" required /></td>
+            </tr>
+
+            <tr>
+                <td>Product Name</td>
+                <td><input type="text" id="product_name" value="titan" required /></td>
+            </tr>
+            <tr>
+                <td>Product Description</td>
+                <td><input type="text" id="product_description" value="a female watch" required /></td>
+            </tr>
+            <tr>
+                <td>Size</td>
+                <td><input type="text" id="size" value="L" required /></td>
+            </tr>
+            <tr>
+                <td>Color</td>
+                <td><input type="text" id="color" value="Rose Gold" required /></td>
+            </tr>
+            <tr>
+                <td>Available Product</td>
+                <td><input type="text" id="available_product" value="100" required /></td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td><input type="text" id="price" value="300" required /></td>
+            </tr>
+            <tr>
+                <td>Weight</td>
+                <td><input type="text" id="weight" value="180" required /></td>
+            </tr>
+            <tr>
+                <td>Picture</td>
+                <td><input type="text" id="picture" value="/images/dummy.jpeg" required /></td>
+            </tr>
+            <tr>
+                <td>Note</td>
+                <td><input type="text" id="note" value="A sample note" required /></td>
+            </tr>
+            <tr>
+                <td>Note</td>
+                <td><input type="text" id="product_tag" value="A sample product tag" required /></td>
+            </tr>
+            <tr>
+                <td>Note</td>
+                <td><input type="text" id="product_in_cart" value="0" required /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Send" /></td>
+            </tr>
+        </table>
+
+    </form>
+</body>
+
+</html>

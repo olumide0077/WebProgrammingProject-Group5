@@ -40,12 +40,11 @@
             event.preventDefault();
             await fetch("https://rest-api-webproject.herokuapp.com/products/new", requestOptions)
                 .then(response => response.text())
-                .then(result => console.log(result))
-                .catch(error => console.log(error));
+                .then(result => alert(result))
+                .catch(error => alert(error));
         }
 
     </script>
-
 </head>
 
 <body>
@@ -58,7 +57,7 @@
         <h2>Example to POST Product</h2>
         <table border="0">
             <tr>
-                <td>Brand_id</td>
+                <td>Brand id</td>
                 <td><input type="text" id="brand_id" value="1" required /></td>
             </tr>
 
@@ -99,11 +98,11 @@
                 <td><input type="text" id="note" value="A sample note" required /></td>
             </tr>
             <tr>
-                <td>Note</td>
+                <td>Product Tag</td>
                 <td><input type="text" id="product_tag" value="A sample product tag" required /></td>
             </tr>
             <tr>
-                <td>Note</td>
+                <td>Product In Cart</td>
                 <td><input type="text" id="product_in_cart" value="0" required /></td>
             </tr>
             <tr>

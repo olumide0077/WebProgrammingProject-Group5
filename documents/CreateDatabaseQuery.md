@@ -29,22 +29,27 @@ CREATE TABLE "products" (
   "weight" VARCHAR(50),
   "picture" VARCHAR(50),
   "note" VARCHAR(50),
+  "product_tag" character varying(50),
+  "product_in_cart" integer,
   PRIMARY KEY (product_id),
   CONSTRAINT fk_brand
       FOREIGN KEY(brand_id) 
 	  REFERENCES brands(brand_id)
 );
 
-CREATE TABLE "users"(
-  "user_id"  INT GENERATED ALWAYS AS IDENTITY,
-  "reg_date" VARCHAR(50) ,
-  "first_name" VARCHAR(50),
-  "last_name" VARCHAR(50),
-  "email" VARCHAR(50),
-  "password" VARCHAR(50),
-  "user_role" VARCHAR(50),
-  PRIMARY KEY(user_id)
-);
+CREATE TABLE IF NOT EXISTS public.users
+(
+    "user_id" integer NOT NULL GENERATED ALWAYS AS IDENTITY ,
+    "reg_date" character varying(50),
+    "first_name" character varying(50),
+    "last_name" character varying(50),
+    "email" character varying(50),
+    "password" character varying(50),
+    "user_role" character varying(50),
+    "username" character varying(50) NOT NULL,
+    CONSTRAINT users_pkey PRIMARY KEY (user_id)
+)
+
 
 CREATE TABLE "customers" (
   "customer_id" INT GENERATED ALWAYS AS IDENTITY,

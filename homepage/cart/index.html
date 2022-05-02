@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../fontawesome-free-5.15.3-web/css/all.css">
+    <link rel="stylesheet" href="../fontawesome-free-5.15.3-web/css/all.min.css">
+    <link rel="stylesheet" href="cart.css">
+    <title>Document</title>
+</head>
+<body>
+    
+  <nav>
+    <div class="navbar">
+      <div class="logo"><a href="../index.html">Watch-Ecommerce</a></div>
+      
+      <div class="cart">
+          <a href="#"> <i class="fas fa-shopping-cart"> </i> </a><div class="countcontainer" id="countcontainer">0</div>
+    </div>
+
+    </div>
+  </nav>  
+
+<div class="productflex">
+
+    <div class="imcontainer" id="imgflex">
+
+</div>
+
+
+<!-- another container -->
+<div class="summarycontainer">
+    <div class="header"><h1> order summary</h1></div>
+<!-- <div class="pr"><h4> shipping price : € 23445</h4></div> -->
+
+    <div class="gpr"><h4>Ground Total : € </h4> <h4 id="groundtotal">0</h4></div>
+
+    <button>proceed to check out</button>
+</div>
+
+
+</div>
+
+<script>
+// let incrementflex = document.querySelector('.incrementflex');
+
+function displayItems() {
+    let cartItem = JSON.parse(localStorage.getItem('productadded'))
+     let html = "";
+     cartItem.forEach(element => {
+         html +=`
+         <div class="imgflex" >
+         <div class="imgcontainer">
+    <img src="${element.picture}" alt="">
+</div>
+
+   
+
+
+<div class="imgdetails">
+<h2>${element.name}</h2>
+
+
+
+<div class="sz">
+<p>description : </p>
+<p class="szvalue">${element.description}</p>
+</div>
+  
+
+
+
+</div>
+
+<div class="quantityprice">
+
+
+
+<div class="qdetails">
+<div class="qprice">
+    <h2>Price : ${element.price}</h2>
+</div>
+
+<div class="qprice">
+    <h2>Quantity : ${element.quantity}</h2>
+</div>
+
+<div class="qprice">
+    <h2>Total Price : ${element.totalPrice}</h2>
+</div></div>
+
+
+
+</div>
+</div>
+         `
+     });
+     document.getElementById('imgflex').innerHTML = html;
+}
+displayItems();
+
+
+  function cartNumber() {
+    let count = 0;
+    let cartItem = JSON.parse(localStorage.getItem('productadded'))
+   cartItem.forEach(element => {
+       count = element.quantity +=count;
+   });
+   document.getElementById('countcontainer').innerText = count;
+}
+cartNumber();
+
+function totalPrice(){
+    let totalPrice = 0;
+    let cartItem = JSON.parse(localStorage.getItem('productadded'))
+   cartItem.forEach(element => {
+       totalPrice = element.totalPrice +=totalPrice;
+   });
+
+   document.getElementById('groundtotal').innerText=totalPrice;
+  
+}
+totalPrice()
+
+
+
+
+function quantity(params){
+
+let cartItem = JSON.parse(localStorage.getItem('productadded'));
+cartItem.forEach(item => {
+        if(params.name == item.name){
+            params.quantity = item.quantity += 1;
+            params.totalPrice = item.totalPrice += params.totalPrice;
+            
+        }else{
+            products.push(item)
+        }
+        });
+        localStorage.setItem('productadded', JSON.stringify(products))
+window.location.reload();
+}
+
+
+// incrementflex.addEventListener('click',  function(event) {
+//   let product1 = {
+//         name: document.querySelector('.productname').textContent,
+//          quantity: 1,
+//          description: document.querySelector('.description').textContent,
+//          price : parseInt(document.querySelector('.amount').textContent),
+//          totalPrice : parseInt(document.querySelector('.amount').textContent)
+//        }
+
+//   if(event.target.className == "plus"){
+    
+//     let cartItem = JSON.parse(localStorage.getItem('productadded'));
+
+//     cartItem.forEach(item=> {
+//             if(product1.name == item.name){
+//                 product1.quantity = item.quantity += 1;
+//                 product1.totalPrice += item.totalPrice;
+                
+//             }else{
+//                 products.push(item)
+//             }
+//         });
+//         products.push(product1)
+    
+
+//     localStorage.setItem('productadded', JSON.stringify(products));
+//     window.location.reload();
+
+//   }else if(event.target.className == "minus"){
+//     let cartItem = JSON.parse(localStorage.getItem('productadded'));
+   
+//     cartItem.forEach(item=> {
+//             if(product1.name == item.name){
+//               if(item.quantity > 1){
+//                 product1.quantity = item.quantity -= 1;
+//                 product1.totalPrice = item.totalPrice -  product1.totalPrice;
+//               }
+               
+                
+//             }else{
+//                 products.push(item)
+//             }
+//         });
+//         products.push(product1)
+    
+
+//     localStorage.setItem('productadded', JSON.stringify(products));
+//     window.location.reload();
+//   } 
+  
+// });
+</script>
+</body>
+</html>

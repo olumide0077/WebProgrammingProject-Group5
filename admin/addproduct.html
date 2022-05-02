@@ -23,7 +23,9 @@
                 "price": document.getElementById("price").value,
                 "weight": document.getElementById("weight").value,
                 "picture": document.getElementById("picture").value,
-                "note": document.getElementById("note").value
+                "note": document.getElementById("note").value,
+                "product_tag": document.getElementById("product_tag").value,
+                "product_in_cart": document.getElementById("product_in_cart").value
             };
 
             var requestOptions = {
@@ -94,6 +96,14 @@
             <tr>
                 <td>Note</td>
                 <td><input type="text" id="note" value="A sample note" required /></td>
+            </tr>
+            <tr>
+                <td>Note</td>
+                <td><input type="text" id="product_tag" value="A sample product tag" required /></td>
+            </tr>
+            <tr>
+                <td>Note</td>
+                <td><input type="text" id="product_in_cart" value="0" required /></td>
             </tr>
             <tr>
                 <td></td>

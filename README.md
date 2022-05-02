@@ -1,6 +1,8 @@
 # WebProgrammingProject-Group5
 
 This repository is for Web programming project
+The Front end is hosted at : https://webprojectg5.herokuapp.com/
+The Rest api is hosted at : https://rest-api-webproject.herokuapp.com
 
 ## Documents
 Design and instructions documents can be found under **documents** folder
@@ -24,4 +26,22 @@ cd rest-api-webproject/
 and to get PostgreSQL database url please run following command
 ```
 heroku config:get DATABASE_URL
+```
+
+### Admin pages
+Because of security issues, we are not linking admin pages to add data on website, admin would have access to those pages using following links
+**To add User**
+
+```
+https://webprojectg5.herokuapp.com/admin/adduser.html
+```
+**To add Brand**
+
+```
+https://webprojectg5.herokuapp.com/admin/addbrand.html
+```
+
+**To add Product**
+```
+https://webprojectg5.herokuapp.com/admin/addproduct.html
 ```

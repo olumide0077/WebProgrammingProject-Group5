@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <title>Add Brand Data</title>
+    <script>
+
+
+        async function sendData() {
+
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+            myHeaders.append("Accept", "application/json");
+
+            var raw = {
+                "brand_name": document.getElementById("brand_name").value
+            };
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: JSON.stringify(raw),
+                mode: 'cors'
+
+            };
+            console.log(JSON.stringify(raw))
+            console.log('end call')
+            event.preventDefault();
+            await fetch("https://rest-api-webproject.herokuapp.com/brands/new", requestOptions)
+                .then(response => response.text())
+                .then(result => alert(result))
+                .catch(error => alert(error));
+        }
+
+    </script>
+</head>
+
+<body>
+    <style>
+        tr>*+* {
+            padding-left: 4em;
+        }
+    </style>
+    <form onsubmit="sendData()">
+        <h2>POST Brand</h2>
+        <table border="0">
+            <tr>
+                <td>Brand Name</td>
+                <td><input type="text" id="brand_name" value="Gucci" required /></td>
+            </tr>
+                <td></td>
+                <td><input type="submit" value="Send" /></td>
+            </tr>
+        </table>
+
+    </form>
+</body>
+
+</html>

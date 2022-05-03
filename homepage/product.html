@@ -18,7 +18,7 @@
        
        <div class="logoflex"> 
       <div class="logo">
-        <img src="wristwatchesImage/logo.png">
+        <img src="Picture/logo.png">
       </div>
         
       <div class="menu" onclick="display()">
@@ -44,10 +44,10 @@
       </div>
       
 
-      <div class = "cart"><a href="cart">
+      <div class = "cart"><a href="cart.html">
         <button class="btn btn-menu">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-        </button><span class="cartnumber">0</span>
+        </button><span>0</span>
       </a></div>
     
       <div class="search">
@@ -68,21 +68,21 @@
    <div class="imagewrap">
 
   <div class="imgcontainer">
-      <!-- <img src="wristwatchesImage/red.jpeg" alt=""> -->
+      <img src="Picture/red.jpeg" alt="">
   </div> 
-<h2>Product Name : <span class="productname">seko watch 2</span> </h2>
+
  </div>
     
   <div class="detailscontainer">
       <div class="contentcontainer">
-          <p style="padding: 30px; margin-bottom: 20px;" class="description">
-             <!-- Beautiful Wristwatches for Men, Luxurious Top Brand  -->
+          <p>
+             Beautiful Wristwatches for Men, Luxurious Top Brand 
           </p>
-          <!-- <div class="rw">
+          <div class="rw">
           <p>38 reviews</p>
           <p>109 orders</p>
 </div>
-          <p>icon</p> -->
+          <p>icon</p>
       </div> 
 
     <div class="price">
@@ -91,34 +91,45 @@
           <i class="fas fa-euro"></i>
         </div>
       
-        <h2 class="amount">
-          200
-        </h2>
+        <h2>200</h2>
     </div>
        
     <div class="quantity">
         <h2 class="title"> quantity : </h2>
-        <h2 class="quantitynum">1</h2>
-    </div>
-     
-<div class="increaseflexcontainer">
-    <div class="incrementflex">
-        <div class="minus">
-            <i class="fa-solid fa-minus" class="minus"></i>
-        </div>
-        <div class="plus">
-            <i class="fas fa-plus" class="plus"></i>
-        </div>
+        <h2>1</h2>
     </div>
 
-    <!-- <div class="remove">
-    <i>delete</i>
-</div> -->
+    <div class="incrementflex">
+        <div class="minus">
+            <i class="fa-solid fa-minus"></i>
+        </div>
+        <div class="plus">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+    
+<div class="categoryimgflex">
+    <div class="watchimgcontainer">
+        <img src="Picture/darkblue.jpeg" alt="">
+    </div>
+    <div class="watchimgcontainer">
+        <img src="Picture/yellow.jpeg" alt="">
+    </div>
+    <div class="watchimgcontainer">
+        <img src="Picture/darkgreen.jpeg" alt="">
+    </div>
+    <div class="watchimgcontainer">
+        <img src="Picture/black.jpeg" alt="">
+    </div>
+    <div class="watchimgcontainer">
+        <img src="Picture/lightgreen.jpeg" alt="">
+    </div>
+    
 </div>
  
  <div class="cartflex">
      <button type="submit">buy now</button>
-     <button type="submit" class="addtocart">add to cart</button>
+     <button type="submit">add to cart</button>
      <!-- <div class="iconi"><i class='fas fa-heart'><i></div> -->
    
  </div>
@@ -128,230 +139,8 @@
 
 </div>   
   </section>
-
-
   <script>
 
-    const dataA = window.location.search;
-    let b = dataA.slice(7);
-    let c = b.replace(/%/g, " ");
-    let d = c.replace(/20/g, "");
-   
-    // console.log(d);
-
-    // https://rest-api-webproject.herokuapp.com/products/
-
-    // {"results":[{"product_id":4,"brand_id":1,"product_name":"seko watch 2","product_escription":"an ok watch","size":"100","color":"silver","available_product":"100","price":"600","weight":"10","picture":"/images/seko1.jpeg","note":"call me when ready"}]}
-    // imgcontainer
-
-fetch('https://rest-api-webproject.herokuapp.com/products/' + d).then(res => res.json()).then(data =>{
-//   available_product: "100"
-// brand_id: 1
-// color: "silver"
-// note: "call me when ready"
-// picture: "/images/seko1.jpeg"
-// price: "600"
-// product_description: "an ok watch"
-// product_id: 4
-// product_name: "seko watch 2"
-// size: "100"
-// weight: "10"
-data.results.forEach(element => {
-  firstImage = `<img src="${element.picture}" alt="">`
-   document.querySelector('.imgcontainer').innerHTML = firstImage;
-   let productname = `${element.product_name}`
-    let description = `${element.product_description}`
-    let price = `${element.price}`
-    document.querySelector('.description').innerText=description;
-    document.querySelector('.amount').innerText=price;
-    document.querySelector('.productname').innerText=productname;
-
-
-});
-
-})
-    </script>
-
-
-<!-- =================================== -->
-<script>
-
-// let minus = document.getElementsByClassName('minus');
-// let plus = document.getElementsByClassName('plus');
-
-let incrementflex = document.querySelector('.increaseflexcontainer');
-let containerflex = document.querySelector('.containerflex');
-
-
-let addtocart = document.getElementsByClassName('addtocart');
-
-let products = [];
-let productsquantity = [];
-
-for (let index = 0; index < addtocart.length; index++) {
-   let cartBtn = addtocart[index];
-   cartBtn.addEventListener('click', () =>{       
-       let product = {
-         name: document.querySelector('.productname').textContent,
-         quantity: 1,
-         description: document.querySelector('.description').textContent,
-         price : parseInt(document.querySelector('.amount').textContent),
-         totalPrice : parseInt(document.querySelector('.amount').textContent)
-       }
-       addToLocal(product);
-      // quantity(product);
-   })
-    
-}
-
-function addToLocal(params) {
-    let cartItem = JSON.parse(localStorage.getItem('productadded'));
-
-    if(cartItem === null){
-        products.push(params)
-        localStorage.setItem('productadded', JSON.stringify(products))
-    }else{
-        cartItem.forEach(item=> {
-            if(params.name == item.name){
-                params.quantity = item.quantity += 1;
-                params.totalPrice = item.totalPrice += params.totalPrice;
-                
-            }else{
-                products.push(item)
-            }
-        });
-        products.push(params)
-    }
-    localStorage.setItem('productadded', JSON.stringify(products))
-   
-    window.location.reload();
-};
-
-// function getquantity(){
-  
-// }
-// getquantity();
-
-// for (let index = 0; index < addtocart.length; index++) {
-//    let cartBtn = addtocart[index];
-//    cartBtn.addEventListener('click', () =>{       
-       
-//        addToLocal(product);
-      
-//    })
-    
-// }
-
-
-
-incrementflex.addEventListener('click',  function(event) {
-  let product1 = {
-        name: document.querySelector('.productname').textContent,
-         quantity: 1,
-         description: document.querySelector('.description').textContent,
-         price : parseInt(document.querySelector('.amount').textContent),
-         totalPrice : parseInt(document.querySelector('.amount').textContent)
-       }
-
-  if(event.target.className == "plus"){
-    
-    let cartItem = JSON.parse(localStorage.getItem('productadded'));
-
-    cartItem.forEach(item=> {
-            if(product1.name == item.name){
-                product1.quantity = item.quantity += 1;
-                product1.totalPrice += item.totalPrice;
-                
-            }else{
-                products.push(item)
-            }
-        });
-        products.push(product1)
-    
-
-    localStorage.setItem('productadded', JSON.stringify(products));
-    window.location.reload();
-
-  }else if(event.target.className == "minus"){
-    let cartItem = JSON.parse(localStorage.getItem('productadded'));
-   
-    cartItem.forEach(item=> {
-            if(product1.name == item.name){
-              if(item.quantity > 1){
-                product1.quantity = item.quantity -= 1;
-                product1.totalPrice = item.totalPrice -  product1.totalPrice;
-              }
-               
-                
-            }else{
-                products.push(item)
-            }
-        });
-        products.push(product1)
-    
-
-    localStorage.setItem('productadded', JSON.stringify(products));
-    window.location.reload();
-  } 
-  
-});
-
-function cartNumber() {
-    let countcart = 0;
-    let cartItem = JSON.parse(localStorage.getItem('productadded'))
-   cartItem.forEach(element => {
-       countcart += element.quantity ;
-   });
-   document.querySelector('.cartnumber').innerText = countcart;
-}
-cartNumber();
-
-function quantityNumber() {
-    let count = 0;
-    let cartItem = JSON.parse(localStorage.getItem('productadded'));
-
-   cartItem.forEach(element => {
-     if(d == element.name){
-      count = element.quantity;
-      document.querySelector('.quantitynum').innerText = count;
-      
-     } 
-   });
-}
-quantityNumber();
-
-
-// function displayItems() {
-//     let cartItem = JSON.parse(localStorage.getItem('prdInCart'))
-//      let html = "";
-//      cartItem.forEach(element => {
-//          html +=`
-//          <h2>${element.name}</h2>
-//          <h2>${element.price}</h2>
-//          <h2>${element.quantity}</h2>
-//          <h2>${element.totalPrice}</h2>
-//          `
-//      });
-     
-// }
-// displayItems();
-
-
-
-
-// function totalPrice(){
-//     let totalPrice = 0;
-//     let cartItem = JSON.parse(localStorage.getItem('prdInCart'))
-//    cartItem.forEach(element => {
-//        totalPrice = element.totalPrice +=totalPrice;
-//    });
-//    console.log(totalPrice);
-// }
-// totalPrice()
-</script>
-
-<!-- ========= end dddddddddddddddd=============== -->
-  <script>
     var menuitem = document.querySelectorAll('.menuitem');
     var active = document.querySelector('.active');
     var cart = document.querySelectorAll('.cart');
@@ -377,7 +166,15 @@ quantityNumber();
           
           count = "true";
         }
+        
+    
+    
+    
+        
+        
+    
       }
+    
     </script>
 </body>
 </html>

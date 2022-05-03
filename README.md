@@ -1,7 +1,7 @@
 # WebProgrammingProject-Group5
 
 This repository is for Web programming project
-The Front end is hosted at : https://webprojectg5.herokuapp.com/
+The Front end is hosted at : https://webprojectg5.herokuapp.com/workspace/homepage.html
 The Rest api is hosted at : https://rest-api-webproject.herokuapp.com
 
 ## Documents

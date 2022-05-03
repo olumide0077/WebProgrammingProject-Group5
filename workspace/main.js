@@ -22,7 +22,7 @@ function prodcutsDetails() {
 }
 
 async function fetchData() {
-  const response = await fetch('http://rest-api-webproject.herokuapp.com/products').then(res =>res.json()).then(data =>{
+  const response = await fetch('https://rest-api-webproject.herokuapp.com/products').then(res =>res.json()).then(data =>{
     console.log(data);
     let datasave = "";
     data.results.forEach(element => {

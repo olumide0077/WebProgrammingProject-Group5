@@ -5,12 +5,12 @@ const router = express.Router()
 /**
  * @swagger
  * /brands:
- *      get:
- *          description: Use to request all brands from db
- *          summary: API to retrive all brands data.
- *      responses:
- *          '200': 
- *              description: A successful response
+ *  get:
+ *    description: Use to request all brands from db
+ *    summary: API to GET all brands data.
+ *    responses:
+ *      '200': 
+ *        description: A successful response
  */
 router.get("/", async (req, res) => {
     const { Pool } = require('pg');
@@ -39,7 +39,9 @@ router.get("/", async (req, res) => {
         console.error(err);
         res.json({ error: err });
     }
+
 })
+
 
 /**
  * @swagger
@@ -68,7 +70,7 @@ router.get("/", async (req, res) => {
 router.post("/new", async (req, res) => {
     const name = req.body.name;
     const query = `INSERT INTO brands (brand_name) VALUES (\'${name}\');`
-    console.log ('query is = ' +query)
+    console.log('query is = ' + query)
     const { Pool } = require('pg');
     const pool = (() => {
         if (process.env.NODE_ENV !== 'production') {
@@ -86,7 +88,7 @@ router.post("/new", async (req, res) => {
         }
     })();
     try {
-        const client = await pool.connect();        
+        const client = await pool.connect();
         const result = await client.query(query);
         res.status(200).send("successfuly added brand");
         client.release();
@@ -96,23 +98,23 @@ router.post("/new", async (req, res) => {
     }
 })
 
- /**
- * @swagger
- * /brands/{id}:
- *   get:
- *     summary: Retrieve a single brand record.
- *     description: API to retrieve a single brand record base on id provided.
- *     responses:
- *       200:
- *         description: A single brand data.
- *     parameters:
- *      - name: id
- *        in: path
- *        description: brand id
- *        schema:
- *          type: integer
- *        required: true 
- *        example: 1  
+/**
+* @swagger
+* /brands/{id}:
+*   get:
+*     summary: Retrieve a single brand record.
+*     description: API to retrieve a single brand record base on id provided.
+*     responses:
+*       200:
+*         description: A single brand data.
+*     parameters:
+*      - name: id
+*        in: path
+*        description: brand id
+*        schema:
+*          type: integer
+*        required: true 
+*        example: 1  
 */
 router.get("/:id", async (req, res) => {
     brand_id = req.params.id

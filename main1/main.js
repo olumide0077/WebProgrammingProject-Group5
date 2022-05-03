@@ -31,7 +31,7 @@ async function fetchData() {
       `<div class="column">
         <div class="prntcontainer">
           <div class="imgcontainer">
-            <img src="{element.picture}" alt="${element.product_name}">
+            <img src="${element.picture}" alt="${element.product_name}">
           </div>
           <div class="content">
             <h2>${element.product_name}</h2>

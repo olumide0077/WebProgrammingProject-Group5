@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup Form</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
+        integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title-text">
+            <div class="title login">Login Form</div>
+            <div class="title signup">Signup Form</div>
+        </div>
+        <div class="form-container">
+            <div class="slide-controls">
+                <input type="radio" name="slider" id="login" checked>
+                <input type="radio" name="slider" id="signup">
+                <label for="login" class="slide login">Login</label>
+                <label for="signup" class="slide signup">Signup</label>
+                <div class="slide-tab"></div>
+            </div>
+            <div class="form-inner">
+                <form action="#" class="login">
+                    <div class="field">
+                        <input id="signinEmail" type="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="field">
+                        <input id="signinPassword" type="password" placeholder="Password" required>
+                    </div>
+                    <div class="pass-link"><a href="forgetpassword.html">Forgot password?</a></div>
+                    <div class="field">
+                        <input id="signinBtn" type="button" value="Login">
+                    </div>
+                    <div class="signup-link">Not a member?<a href="#">Signup now</a></div>
+                </form>
+                <form action="#"  method="post" class="signup" autocomplete="off">
+                    <div class="field">
+                        <input id="signUpUsername" type="text" name="username" placeholder="Username" required>
+                    </div>
+                    <div class="field">
+                        <input id="signUpEmail" type="text" placeholder="Email Address" required>
+                    </div>
+                    <div class="field">
+                        <input id="signUpPassword" type="password" placeholder="Password" required>
+                    </div>
+                    <div class="field">
+                        <input id="confirmSignUpPassword" type="password" placeholder=" Confirm Password" required>
+                    </div>
+                    <div class="field">
+                        <input id="signupbtn" type="button" value="Signup">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <p>Copyright @ 2022 <a href="#">DESIGNTIME</a>All rights reserved</p>
+    </div>
+    <script src="login.js"></script>
+    
+</body>
+</html>

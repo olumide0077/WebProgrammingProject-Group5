@@ -53,6 +53,7 @@ nav{
 }
 .active, .menuitem{
   margin-right: 10px;
+  
 }
 .cart{
   margin-right: 10px;
@@ -62,11 +63,24 @@ nav{
   color: rgb(189, 24, 134);
 }
 
-.active a, .menuitem a{
+.menucontainer .active a, .menuitem a{
 font-size: 18px;
-color: rgb(189, 24, 134);
+color: #fff;
+padding: 3px;
 text-transform: capitalize;
 }
+
+.menucontainer .menuitem{
+  box-sizing: content-box;
+  background-color: black;
+  width: 90px;
+  height: 20px;
+  padding: 9px;
+  border: 1px solid  rgb(209, 36, 169);
+  border-radius: 10%;
+  
+}
+
 
 a{
   text-decoration: none;
@@ -151,10 +165,21 @@ justify-content: space-around;
 flex-wrap: wrap;
 margin-left: 150px;
 }
+.menucontainer  .active{
+  box-sizing: content-box;
+  background-color: rgb(209, 36, 169);
+  width: 60px;
+  height: 10px;
+  padding: 20px;
+  border: 1px solid  rgb(209, 36, 169);
+  border-radius: 10%;
+  
+}
 .prntcontainer{
   background-color:gray;
   padding-bottom: 20px;
-  width: 250px;
+  /* width: 250px; */
+  width: 300px;
   margin-top: 20px;
   border-radius:10px;
   align-items: center;

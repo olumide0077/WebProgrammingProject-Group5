@@ -173,3 +173,10 @@ cursor: pointer;
 .cartTotal {
     width: 8%;
 }
+.btn-checkout {
+  display: none;
+  cursor: pointer;
+}
+.checkout_btn_show {
+  display: block;
+}

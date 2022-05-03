@@ -1,0 +1,14 @@
+html,body{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    background-color: #fff;
+   background: -webkit-linear-gradient(right,#c9c3d6, #4058db);
+}
+table, td {
+    border: 1px solid;
+}
+tr>*+* {
+    padding-left: 4em;
+}

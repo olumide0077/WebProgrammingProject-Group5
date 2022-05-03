@@ -2,9 +2,8 @@
 
 <head>
     <title>Add Brand Data</title>
+    <link rel="stylesheet" href="admin.css">
     <script>
-
-
         async function sendData() {
 
             var myHeaders = new Headers();
@@ -41,14 +40,14 @@
         }
     </style>
     <form onsubmit="sendData()">
-        <h2>POST Brand</h2>
+        <h2>Add Brand</h2>
         <table border="0">
             <tr>
                 <td>Brand Name</td>
                 <td><input type="text" id="brand_name" value="Gucci" required /></td>
             </tr>
-                <td></td>
-                <td><input type="submit" value="Send" /></td>
+            <td></td>
+            <td><input type="submit" value="Send" /></td>
             </tr>
         </table>
 

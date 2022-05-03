@@ -59,15 +59,15 @@ router.get("/", async (req, res) => {
  *          name: Example
  *          type: object
  *          format: application/json
- *          example: {"reg_date": "2-03-2022", "first_name": "harim","last_name": "muzamil","email": "harim@example.com","user_role": "customer"}
+ *          example: {"reg_date": "2-03-2022", "first_name": "harim","last_name": "muzamil","email": "harim@example.com","user_role": "customer","username": "harim"}
  *    responses:
  *      '200':
  *        description: Successfully added a user
  */
 router.post("/new", async (req, res) => {
-    const query = `INSERT INTO users(reg_date, first_name, last_name, email, password, user_role)
+    const query = `INSERT INTO users(reg_date, first_name, last_name, email, password, user_role, username)
         VALUES (\'${req.body.reg_date}\', \'${req.body.first_name}\', \'${req.body.last_name}\', \'${req.body.email}\',
-        \'${req.body.password}\', \'${req.body.user_role}\');`
+        \'${req.body.password}\', \'${req.body.user_role}\', \'${req.body.username}\');`
 
     console.log('query is = ' + query)
     const { Pool } = require('pg');

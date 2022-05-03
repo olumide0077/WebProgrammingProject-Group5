@@ -14,7 +14,7 @@ for example to get products we can use following command
 ```
 https://rest-api-webproject.herokuapp.com/products
 ```
-### Rest API deployment
+### Rest API deployment (for internal dev team only)
 We have deployed our REST api on Heroku with base URL as https://rest-api-webproject.herokuapp.com and app name as "rest-api-webproject".
 To clone this app in your local enviroment, please contact Harim Fatima Muzamil or Olumide for credentials or added as collaborator.
 After that please run following commands in any folder.
